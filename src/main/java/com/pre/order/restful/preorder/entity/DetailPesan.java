@@ -1,5 +1,6 @@
 package com.pre.order.restful.preorder.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,9 +27,9 @@ public class DetailPesan {
     @JoinColumn(name = "id_pesan", nullable = false)
     private Pesan pesan;
 
-    @ManyToOne
-    @NotNull
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "id_alat", nullable = false)
+    @JsonIgnore
     private Alat alat;
 
     @NotNull
